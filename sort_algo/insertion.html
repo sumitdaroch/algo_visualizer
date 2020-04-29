@@ -13,6 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
+
 	<section id="sort">
     <div class="sort-container container">
       <h1 style="margin-top: 50px"><b>Insertion Sort Algorithm</b>
@@ -30,14 +31,14 @@
     <div style="margin-top: 10px">
 
     <!-- form -->
-    <form name="myForm" onsubmit="return validateForm()" method="post">
+    <form action="insertion_working.html" name="myForm" onsubmit="return validateForm()" method="post">
     	<div class="text-center">
-    	    <h3 style="color: white; margin-bottom: 20px">Enter No. of Elements :</h3> 	    	
-           <input type="text" name="number" placeholder="Number <= 10" style="border-radius:5px" aria-describedby="inputGroup-sizing-sm" onkeypress="return onlyNumberKey(event)" required>
+    	    <h3 style="color: white; margin-bottom: 20px">Enter No. of Elements :</h3>   	
+           <input id="name1" type="text" name="number" placeholder="Number <= 10" style="border-radius:5px" aria-describedby="inputGroup-sizing-sm" onkeypress="return onlyNumberKey(event)" required>
            <br>
            <br>
            <h3 style="color: white; margin-bottom: 20px">Enter the Elements :</h3>
-           <input type="text" name="element" class="form-group" placeholder="Seprated by , (comma)" style="border-radius:5px" aria-describedby="inputGroup-sizing-sm" onkeypress="return onlyNumberCommaKey(event)" required>
+           <input id="element1" type="text" name="element" class="form-group" placeholder="Seprated by , (comma)" style="border-radius:5px" aria-describedby="inputGroup-sizing-sm" onkeypress="return onlyNumberCommaKey(event)" required>
            <br>
            <br>
            <button type="submit" name="submit" class="btn btn-primary" >Lets Go</butto>
@@ -46,14 +47,15 @@
     </form>
 
     <!-- end form -->
+           <br>
            <a href="../index.html" class="btn btn-info btn-lg">
           <i class="fas fa-arrow-left" style="margin-right: 5px"></i>Back
         </a>
              
     </div>
 
-
   </section>
+
 
 
 
