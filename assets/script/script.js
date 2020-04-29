@@ -55,6 +55,14 @@ function create()
 	var arr =elements.split(',');
 	for (var i = 0; i <number; i++) 
 	{   
-		box.innerHTML = box.innerHTML +"<input style='text-align:center' class='box' type='text' name='mytext'+ i>"
+		box.innerHTML = box.innerHTML +"<input style='text-align:center' value='"+arr[i]+"'class='box w3-container w3-center w3-animate-bottom' type='text' id='mytext"+i+"' disabled>"
+
 	}
+	for (var i = 0; i <number; i++) 
+	{   
+		   // alert("bb");
+		   // alert(document.getElementById("mytext"+i).value);
+           
+	}
+
 }

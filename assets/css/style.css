@@ -253,7 +253,17 @@ h1, h2{
 
 .box 
 {
-    height: 50px;
-    width: 50px;
+    height: 65px;
+    width: 65px;
     border-radius: 5px;
+    animation-name: enter;
+    animation-duration: 2s;
+    box-shadow: 2px 2px 2px #A6D5FD;
+    color: black;
+    background-color: #C9FFB3;
+}
+
+@keyframes enter
+{
+  
 }
