@@ -52,17 +52,129 @@ function create()
     document.getElementById('start').style.visibility = 'hidden';
 	var number = localStorage.getItem("n");
 	var elements= localStorage.getItem("array")
-	var arr =elements.split(',');
+	//var arr =elements.split(',');
+    // covert string into number
+    var arr = elements.split(',').map(function(item) {
+    return parseInt(item, 10);
+                             });
+    var box1 = document.getElementById("box1");
+
 	for (var i = 0; i <number; i++) 
 	{   
-		box.innerHTML = box.innerHTML +"<input style='text-align:center' value='"+arr[i]+"'class='box w3-container w3-center w3-animate-bottom' type='text' id='mytext"+i+"' disabled>"
-
+		box1.innerHTML = box1.innerHTML +"<input style='text-align:center' value='"+arr[i]+"'class='box' type='text' id='mytext"+i+"' disabled>"
 	}
-	for (var i = 0; i <number; i++) 
-	{   
-		   // alert("bb");
-		   // alert(document.getElementById("mytext"+i).value);
-           
-	}
+   
+    insertionsort();
 
+	//Algo 
+
+    // let blocks = document.querySelectorAll(".box");
+
+    // for (var i = 1; i < number; i++) 
+    // {  
+    // 	blocks[i].style.backgroundColor = "#FF4949"; 
+
+    // 	await new Promise(resolve =>
+    //     setTimeout(() => {
+    //       resolve();
+    //     }, 1000)
+    //   );
+
+    //     var key = arr[i];  
+    //     var j = i - 1;  
+ 
+    //     while (j >= 0 && arr[j] > key) 
+    //     {  
+    //         arr[j + 1] = arr[j];  
+    //         j = j - 1;  
+    //     }  
+    //     arr[j + 1] = key; 
+    // } 
+    // alert(arr);
+
+}
+
+async function insertionsort() {
+	var number = localStorage.getItem("n");
+	var elements= localStorage.getItem("array")
+    var arr = elements.split(',').map(function(item) {
+    return parseInt(item, 10);
+                             });
+
+	let blocks = document.querySelectorAll(".box");
+    for (var i = 1; i < number; i++) 
+    {
+ 
+       
+
+        await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+                    }, 1000)
+                              );
+        blocks[i].style.backgroundColor = "#FF4949";
+
+        blocks[i].style.animation = "mynewmove 5s";
+
+        await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+                    }, 1000)
+                              );
+        //sorted side
+        var key = blocks[i].value;
+
+        for(var j=i;j>=0;j--)
+        {
+        	blocks[j].style.backgroundColor="green";
+        	if(key<blocks[j].value)
+        	{
+                blocks[j].style.animation="mynewmoveleft 5s";
+                blocks[j+1].style.animation="mynewmoveright 5s";
+        	}
+
+        }
+        
+        //unsorted side
+        for(var j=i+1;j<number;j++)
+        {
+        	blocks[j].style.backgroundColor="white";
+        }   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    //     while (j >= 0 && arr[j] > key) 
+    //     {  
+
+    //        await new Promise(resolve =>
+    //     setTimeout(() => {
+    //       resolve();
+    //     }, 1000)
+    //   );
+    //        blocks[j].style.backgroundColor="white";
+
+    //         arr[j + 1] = arr[j];  
+    //         blocks[j+1].style.animation="mynewmoveleft 2s"
+    //         j = j - 1;  
+    //     }  
+    //     arr[j + 1] = key;
+        
+
+    } 
+    
+	
 }
