@@ -47,10 +47,14 @@ function validateForm()
 }
 
 const container = document.querySelector(".data-container");
+
+
 function create()
  {
     document.getElementById('start').style.visibility = 'hidden';
 	var number = parseInt(localStorage.getItem("n"));
+    document.getElementById('label1').style.visibility = 'visible';
+    document.getElementById('mytext1').style.visibility = 'visible';
 	
 	var elements= localStorage.getItem("array")
 	//var arr =elements.split(',');
@@ -71,8 +75,8 @@ for (let i = 0; i < number; i += 1)
 
     const block = document.createElement("div");
     block.classList.add("block");
-    block.style.height = `${value * 3}px`;
-    block.style.transform = `translateX(${i * 30}px)`;
+    block.style.height = `${value * 5}px`;
+    block.style.transform = `translateX(${i * 50}px)`;
 
     const blockLabel = document.createElement("label");
     blockLabel.classList.add("block__id");
