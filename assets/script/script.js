@@ -46,25 +46,45 @@ function validateForm()
 
 }
 
-
+const container = document.querySelector(".data-container");
 function create()
  {
     document.getElementById('start').style.visibility = 'hidden';
-	var number = localStorage.getItem("n");
+	var number = parseInt(localStorage.getItem("n"));
+	
 	var elements= localStorage.getItem("array")
 	//var arr =elements.split(',');
+
     // covert string into number
     var arr = elements.split(',').map(function(item) {
     return parseInt(item, 10);
                              });
-    var box1 = document.getElementById("box1");
+    // var box1 = document.getElementById("box1");
 
-	for (var i = 0; i <number; i++) 
-	{   
-		box1.innerHTML = box1.innerHTML +"<input style='text-align:center' value='"+arr[i]+"'class='box' type='text' id='mytext"+i+"' disabled>"
-	}
-   
-    insertionsort();
+	// for (var i = 0; i <number; i++) 
+	// {   
+	// 	box1.innerHTML = box1.innerHTML +"<input style='text-align:center' value='"+arr[i]+"'class='box' type='text' id='mytext"+i+"' disabled>"
+	// }
+for (let i = 0; i < number; i += 1)
+   {
+    const value = arr[i];
+
+    const block = document.createElement("div");
+    block.classList.add("block");
+    block.style.height = `${value * 3}px`;
+    block.style.transform = `translateX(${i * 30}px)`;
+
+    const blockLabel = document.createElement("label");
+    blockLabel.classList.add("block__id");
+    blockLabel.innerHTML = value;
+
+    block.appendChild(blockLabel);
+    container.appendChild(block);
+  }
+
+
+
+    insertion();
 
 	//Algo 
 
@@ -94,87 +114,95 @@ function create()
 
 }
 
-async function insertionsort() {
-	var number = localStorage.getItem("n");
-	var elements= localStorage.getItem("array")
-    var arr = elements.split(',').map(function(item) {
-    return parseInt(item, 10);
-                             });
+function swap(el1, el2) {
+  return new Promise(resolve => 
+  {
+    const style1 = window.getComputedStyle(el1);
+    const style2 = window.getComputedStyle(el2);
 
-	let blocks = document.querySelectorAll(".box");
-    for (var i = 1; i < number; i++) 
+    const transform1 = style1.getPropertyValue("transform");
+    const transform2 = style2.getPropertyValue("transform");
+
+    el1.style.transform = transform2;
+    el2.style.transform = transform1;
+
+    // Wait for the transition to end!
+    window.requestAnimationFrame(function() {
+      setTimeout(() => {
+        container.insertBefore(el2, el1);
+        resolve();
+      }, 1000);
+    });
+  });
+}
+
+
+async function insertion()
+{
+    let blocks = document.querySelectorAll(".block");
+
+    // const style1 = window.getComputedStyle(blocks[0]);
+    // const style2 = window.getComputedStyle(blocks[1]);
+
+    // const transform1 = style1.getPropertyValue("transform");
+    // const transform2 = style2.getPropertyValue("transform");
+
+    // blocks[0].style.transform = transform2;
+    // blocks[1].style.transform = transform1;
+
+    // alert("Before 0 - "+Number(blocks[0].childNodes[0].innerHTML));
+    // alert("Before 1 - "+Number(blocks[1].childNodes[0].innerHTML));    
+ 
+    // await swap(blocks[0], blocks[1]);
+
+    // blocks = document.querySelectorAll(".block");
+    // alert("After 0 - "+Number(blocks[0].childNodes[0].innerHTML));
+    // alert("After 1 - "+Number(blocks[1].childNodes[0].innerHTML));
+
+
+
+
+    for(var i=0;i<blocks.length;i++)
     {
- 
        
-
-        await new Promise(resolve =>
+       var key = Number(blocks[i].childNodes[0].innerHTML);
+         await new Promise(resolve =>
         setTimeout(() => {
           resolve();
-                    }, 1000)
-                              );
-        blocks[i].style.backgroundColor = "#FF4949";
+        }, 500)
+      );
 
-        blocks[i].style.animation = "mynewmove 5s";
-
-        await new Promise(resolve =>
+       for(var y = 0;y<i;y++)
+       {
+          blocks[y].style.backgroundColor="green"
+       }
+       var x=i;
+       await new Promise(resolve =>
         setTimeout(() => {
           resolve();
-                    }, 1000)
-                              );
-        //sorted side
-        var key = blocks[i].value;
-
-        for(var j=i;j>=0;j--)
-        {
-        	blocks[j].style.backgroundColor="green";
-        	if(key<blocks[j].value)
-        	{
-                blocks[j].style.animation="mynewmoveleft 5s";
-                blocks[j+1].style.animation="mynewmoveright 5s";
-        	}
-
-        }
-        
-        //unsorted side
-        for(var j=i+1;j<number;j++)
-        {
-        	blocks[j].style.backgroundColor="white";
-        }   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-    //     while (j >= 0 && arr[j] > key) 
-    //     {  
-
-    //        await new Promise(resolve =>
-    //     setTimeout(() => {
-    //       resolve();
-    //     }, 1000)
-    //   );
-    //        blocks[j].style.backgroundColor="white";
-
-    //         arr[j + 1] = arr[j];  
-    //         blocks[j+1].style.animation="mynewmoveleft 2s"
-    //         j = j - 1;  
-    //     }  
-    //     arr[j + 1] = key;
-        
-
-    } 
+        }, 900)
+      );
+       for(var j=i-1;j>=0;j--)
+       {
+            
+            var z=Number(blocks[j].childNodes[0].innerHTML);
+            if( key < z )
+            { 
+              
+              await swap(blocks[j], blocks[x]);
+              blocks = document.querySelectorAll(".block");
+             
+             
+            }
+         x=x-1;   
+       }
+  
     
-	
+    }
+    for(var i=0;i<blocks.length;i++)
+    {blocks[i].style.backgroundColor="green";}
+  
+
+
+
 }

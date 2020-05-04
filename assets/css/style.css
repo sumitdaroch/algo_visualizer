@@ -250,21 +250,16 @@ h1, h2{
   text-transform: uppercase;
 }
 
-
+/*
 .box 
 {
     height: 65px;
-    width: 65px;
+    width: 60px;
     border-radius: 5px;
     color: black;
     background-color: #C9FFB3;
     position: relative;
-    animation-fill-mode: forwards;
 }
-
-
-
-
 
 @keyframes mynewmove {
   from {top: 0px;}
@@ -272,11 +267,42 @@ h1, h2{
 }
 
 @keyframes mynewmoveleft {
-  from {left: 0px;}
-  to {left: 60px;}
+  from {left: 0px; }
+  to {left: 60px; }
 }
 
 @keyframes mynewmoveright {
   from {right: 0px;}
   to {right: 60px;}
+}
+
+@keyframes mynewmoveup {
+  from {bottom: -200px;}
+  to {bottom: 0px;}
+}*/
+
+
+.data-container {
+  width: 500px;
+  height: 300px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.block {
+  width: 28px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #58b7ff;
+  transition: 0.2s all ease;
+}
+
+.block__id {
+  position: absolute;
+  top: -24px;
+  right: 0px;
+  width: 100%;
+  text-align: center;
+  color: white;
 }
