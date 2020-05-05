@@ -27,9 +27,9 @@ function validateForm()
  //    var number1 = document.getElementById("name1");
 	// var element1 = document.getElementById("element1");
 
-    if(x>10)
+    if(x>12)
     {
-    	alert("Number is Greater than 10");
+    	alert("Number is Greater than 12");
         // number1.style.border="solid 3px red";
     	return false;
     }
@@ -48,6 +48,12 @@ function validateForm()
 
 const container = document.querySelector(".data-container");
 
+var delay = 2000;
+
+function speed()
+{
+	delay = ((11-(document.getElementById("speed").value))/2)* 1000;
+}
 
 function create()
  {
@@ -55,7 +61,7 @@ function create()
 	var number = parseInt(localStorage.getItem("n"));
     document.getElementById('label1').style.visibility = 'visible';
     document.getElementById('mytext1').style.visibility = 'visible';
-	
+	$('input[type="range"]').rangeslider();
 	var elements= localStorage.getItem("array")
 	//var arr =elements.split(',');
 
@@ -75,7 +81,7 @@ for (let i = 0; i < number; i += 1)
 
     const block = document.createElement("div");
     block.classList.add("block");
-    block.style.height = `${value * 5}px`;
+    block.style.height = "100px"; /*`${value * 4}px`;*/
     block.style.transform = `translateX(${i * 50}px)`;
 
     const blockLabel = document.createElement("label");
@@ -135,7 +141,7 @@ function swap(el1, el2) {
       setTimeout(() => {
         container.insertBefore(el2, el1);
         resolve();
-      }, 1000);
+      }, delay);
     });
   });
 }
@@ -165,16 +171,14 @@ async function insertion()
 
 
 
-
-    for(var i=0;i<blocks.length;i++)
+    var myvalue = document.getElementById("working");
+    for(var i=1;i<blocks.length;i++)
     {
+       iteration=document.getElementById("iteration");
+       iteration.innerHTML="ITERATION - "+(i);
        
        var key = Number(blocks[i].childNodes[0].innerHTML);
-         await new Promise(resolve =>
-        setTimeout(() => {
-          resolve();
-        }, 500)
-      );
+     
 
        for(var y = 0;y<i;y++)
        {
@@ -184,28 +188,65 @@ async function insertion()
        await new Promise(resolve =>
         setTimeout(() => {
           resolve();
-        }, 900)
+        }, delay)
       );
        for(var j=i-1;j>=0;j--)
        {
-            
+            myvalue.value="Comparison Between "+Number(blocks[j].childNodes[0].innerHTML)+" and "+key ;
+            blocks[x].style.backgroundColor="red";
+            blocks[j].style.backgroundColor="red";	
+            await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
             var z=Number(blocks[j].childNodes[0].innerHTML);
+
             if( key < z )
             { 
-              
-              await swap(blocks[j], blocks[x]);
-              blocks = document.querySelectorAll(".block");
+
+            myvalue.value="Since "+key+" is less than "+ z +" move "+key+" to the right side";
+                          await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );    
+             
+             await swap(blocks[j], blocks[x]);
+             blocks = document.querySelectorAll(".block");
              
              
+
             }
+
+            else
+            {
+            	myvalue.value="Since "+key+" is Greater than or equal to "+ z +" do nothing";
+            	                await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+            	                break;
+            }
+
+            blocks[x].style.backgroundColor="green";
+                   await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+
          x=x-1;   
        }
   
     
+
+
     }
     for(var i=0;i<blocks.length;i++)
     {blocks[i].style.backgroundColor="green";}
-  
+    myvalue.value="Done ! All the elements are sorted";
 
 
 

@@ -33,19 +33,35 @@
     </div>
     <div class="newbox container">
     <div class="data-container container  w3-container w3-center w3-animate-top"></div>
-   <div id="label1" class="" style="margin-top: 50px; visibility: hidden;">
+   <div id="label1" class="" style="margin-top: 10px; visibility: hidden;">
    	
 	<label style="color: green; margin-left: -100px"><h3><b>Green side : Sorted Side</h3></b></label>
 	
 	<label style="color: blue; margin-left: -100px"><h3><b>Blue Side : Unsorted Side</b></h3></label>
+    <br>
+	<label style="color: red; margin-left: -100px"><h3><b>Red For Comparison</b></h3></label>
 
   </div>
 </div>
 <br>
-<div id="mytext1" class=" container text-center" style="visibility: hidden;">
-	<input  class="text1 text-center" type="" name="" value="What is Algorithm doing" disabled>
+
+<div id="mytext1" class="container text-center" style="visibility: hidden;">
+	<h4 id="iteration" style="color: white;margin-top:30px ; margin-bottom: -80px;font-family:Sans-serif; color: #FFE841 "></h4>
+	<input id="working"  class="text1 text-center" type="" name="" value="What is Algorithm doing" disabled>
+	<br>
+	<br>
+	<br>
+	<label style="color: white; font-size:30px ; margin-right: 50px"><b>Speed  :</b></label>
+    <input type="range" class="multi-range" id="speed" min="1" max="10" value="5" onclick="speed()">
+    
+    <div class="text-center" style="margin-top: 30px">
+    <hr style="border: 2px solid red; border-radius: 2px; margin-top: -10px">
+	<a href="insertion.html"><button class="btn btn-primary">Back</button></a>
+	<a href="../index.html"><button class="btn btn-primary">Home</button></a>
 
 </div>
+</div>
+
   </div>
 
 
@@ -57,5 +73,7 @@
 </body>
 
 <script src="../assets/script/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.js"></script>
 
 </html>

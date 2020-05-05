@@ -283,7 +283,7 @@ h1, h2{
 
 
 .data-container {
-  height: 200px;
+  
   position: relative;
   
 }
@@ -296,6 +296,8 @@ h1, h2{
   bottom: 0;
   background-color: #58b7ff;
   transition: 0.2s all ease;
+  border-radius: 5px;
+  box-shadow: 1px 2px;
 }
 
 .block__id {
