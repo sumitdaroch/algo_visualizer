@@ -24,8 +24,6 @@ function validateForm()
 	var arr =y.split(',');
     localStorage.setItem("n",x);
     localStorage.setItem("array",y);
- //    var number1 = document.getElementById("name1");
-	// var element1 = document.getElementById("element1");
 
     if(x>12)
     {
@@ -46,6 +44,8 @@ function validateForm()
 
 }
 
+document.getElementById('start1').innerHTML="Entered Values are : "+ localStorage.getItem("array");
+
 const container = document.querySelector(".data-container");
 
 var delay = 2000;
@@ -55,13 +55,13 @@ function speed()
 	delay = ((11-(document.getElementById("speed").value))/2)* 1000;
 }
 
+
 function create()
  {
     document.getElementById('start').style.visibility = 'hidden';
 	var number = parseInt(localStorage.getItem("n"));
     document.getElementById('label1').style.visibility = 'visible';
     document.getElementById('mytext1').style.visibility = 'visible';
-	$('input[type="range"]').rangeslider();
 	var elements= localStorage.getItem("array")
 	//var arr =elements.split(',');
 
@@ -69,12 +69,7 @@ function create()
     var arr = elements.split(',').map(function(item) {
     return parseInt(item, 10);
                              });
-    // var box1 = document.getElementById("box1");
 
-	// for (var i = 0; i <number; i++) 
-	// {   
-	// 	box1.innerHTML = box1.innerHTML +"<input style='text-align:center' value='"+arr[i]+"'class='box' type='text' id='mytext"+i+"' disabled>"
-	// }
 for (let i = 0; i < number; i += 1)
    {
     const value = arr[i];
@@ -96,31 +91,6 @@ for (let i = 0; i < number; i += 1)
 
     insertion();
 
-	//Algo 
-
-    // let blocks = document.querySelectorAll(".box");
-
-    // for (var i = 1; i < number; i++) 
-    // {  
-    // 	blocks[i].style.backgroundColor = "#FF4949"; 
-
-    // 	await new Promise(resolve =>
-    //     setTimeout(() => {
-    //       resolve();
-    //     }, 1000)
-    //   );
-
-    //     var key = arr[i];  
-    //     var j = i - 1;  
- 
-    //     while (j >= 0 && arr[j] > key) 
-    //     {  
-    //         arr[j + 1] = arr[j];  
-    //         j = j - 1;  
-    //     }  
-    //     arr[j + 1] = key; 
-    // } 
-    // alert(arr);
 
 }
 

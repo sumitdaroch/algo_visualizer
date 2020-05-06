@@ -250,36 +250,6 @@ h1, h2{
   text-transform: uppercase;
 }
 
-/*
-.box 
-{
-    height: 65px;
-    width: 60px;
-    border-radius: 5px;
-    color: black;
-    background-color: #C9FFB3;
-    position: relative;
-}
-
-@keyframes mynewmove {
-  from {top: 0px;}
-  to {top: 200px; background-color: red;}
-}
-
-@keyframes mynewmoveleft {
-  from {left: 0px; }
-  to {left: 60px; }
-}
-
-@keyframes mynewmoveright {
-  from {right: 0px;}
-  to {right: 60px;}
-}
-
-@keyframes mynewmoveup {
-  from {bottom: -200px;}
-  to {bottom: 0px;}
-}*/
 
 
 .data-container {
