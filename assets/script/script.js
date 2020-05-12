@@ -164,7 +164,7 @@ async function insertion()
             if( key < z )
             { 
 
-            myvalue.value="Since "+key+" is less than "+ z +" move "+key+" to the right side";
+            myvalue.value="Since "+key+" is less than "+ z +", move "+key+" to the right side";
                           await new Promise(resolve =>
         setTimeout(() => {
           resolve();
@@ -178,15 +178,26 @@ async function insertion()
 
             }
 
-            else
+            else if(key > z)
             {
-            	myvalue.value="Since "+key+" is Greater than or equal to "+ z +" do nothing";
+            	myvalue.value="Since "+key+" is Greater than "+ z +", do nothing";
             	                await new Promise(resolve =>
         setTimeout(() => {
           resolve();
         }, delay)
       );
             	                break;
+            }
+
+        else{
+
+        myvalue.value="Since "+key+" is equal to "+ z +", do nothing";
+        await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+                              break;
             }
 
             blocks[x].style.backgroundColor="green";
@@ -305,10 +316,20 @@ async function bubble() {
 
       }
 
+      else if(value1< value2)
+      {
+         myvalue.value="Since  "+value1+" is less than "+value2+ ", do nothing";
+                  await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+      }
+
       else
       {
-         myvalue.value="Since  "+value1+" is less than "+value2+ " do nothing";
-                  await new Promise(resolve =>
+        myvalue.value="Since  "+value1+" is equal to "+value2+ ", do nothing";
+        await new Promise(resolve =>
         setTimeout(() => {
           resolve();
         }, delay)
