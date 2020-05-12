@@ -56,8 +56,9 @@ function speed()
 }
 
 
-function create()
+function create(value)
  {
+    
     document.getElementById('start').style.visibility = 'hidden';
 	var number = parseInt(localStorage.getItem("n"));
     document.getElementById('label1').style.visibility = 'visible';
@@ -88,8 +89,12 @@ for (let i = 0; i < number; i += 1)
   }
 
 
-
+    if(value == 1)
     insertion();
+    else if(value == 2)
+    selection(); 
+    else if(value == 5)
+    bubble(); 
 
 
 }
@@ -111,7 +116,7 @@ function swap(el1, el2) {
       setTimeout(() => {
         container.insertBefore(el2, el1);
         resolve();
-      }, delay);
+      }, 250);
     });
   });
 }
@@ -119,29 +124,13 @@ function swap(el1, el2) {
 
 async function insertion()
 {
+    
     let blocks = document.querySelectorAll(".block");
-
-    // const style1 = window.getComputedStyle(blocks[0]);
-    // const style2 = window.getComputedStyle(blocks[1]);
-
-    // const transform1 = style1.getPropertyValue("transform");
-    // const transform2 = style2.getPropertyValue("transform");
-
-    // blocks[0].style.transform = transform2;
-    // blocks[1].style.transform = transform1;
-
-    // alert("Before 0 - "+Number(blocks[0].childNodes[0].innerHTML));
-    // alert("Before 1 - "+Number(blocks[1].childNodes[0].innerHTML));    
- 
-    // await swap(blocks[0], blocks[1]);
-
-    // blocks = document.querySelectorAll(".block");
-    // alert("After 0 - "+Number(blocks[0].childNodes[0].innerHTML));
-    // alert("After 1 - "+Number(blocks[1].childNodes[0].innerHTML));
 
 
 
     var myvalue = document.getElementById("working");
+
     for(var i=1;i<blocks.length;i++)
     {
        iteration=document.getElementById("iteration");
@@ -219,5 +208,121 @@ async function insertion()
     myvalue.value="Done ! All the elements are sorted";
 
 
+
+}
+
+
+
+//selection sort
+
+async function selection()
+{
+    
+    let blocks = document.querySelectorAll(".block");
+    // await swap(blocks[0],blocks[3])
+    // alert(Number(blocks[0].childNodes[0].innerHTML));
+    // blocks = document.querySelectorAll(".block");
+    // alert(Number(blocks[0].childNodes[0].innerHTML));
+
+    var i, j, min_idx;  
+    var n = blocks.length;
+    // One by one move boundary of unsorted subarray  
+    for (i = 0; i < n-1; i++)  
+    {  
+        // Find the minimum element in unsorted array  
+        min_idx = i;  
+        for (j = i+1; j < n; j++) 
+        { 
+        var value1 = Number(blocks[j].childNodes[0].innerHTML);
+        var value2 = Number(blocks[min_idx].childNodes[0].innerHTML);
+        if (value1 < value2 )  
+            min_idx = j; 
+        }     
+  
+        // Swap the found minimum element with the first element  
+        alert(min_idx);
+        alert(i);
+        alert(Number(blocks[min_idx].childNodes[0].innerHTML));
+        alert(Number(blocks[i].childNodes[0].innerHTML));
+        await swap(blocks[i], blocks[min_idx]); 
+        blocks = document.querySelectorAll(".block");
+        alert(Number(blocks[min_idx].childNodes[0].innerHTML));
+        alert(Number(blocks[i].childNodes[0].innerHTML));
+        break;
+    }  
+ 
+}
+
+
+
+async function bubble() {
+  let blocks = document.querySelectorAll(".block");
+  var myvalue = document.getElementById("working");
+  for (let i = 0; i < blocks.length - 1; i += 1) {
+    iteration=document.getElementById("iteration");
+    iteration.innerHTML="ITERATION - "+(i+1);
+    for (let j = 0; j < blocks.length - i - 1; j += 1) {
+
+
+
+
+
+
+      // await new Promise(resolve =>
+      //   setTimeout(() => {
+      //     resolve();
+      //   }, delay)
+      // );
+      
+      const value1 = Number(blocks[j].childNodes[0].innerHTML);
+      const value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
+      myvalue.value="Comparison Between "+value1+" and "+value2;
+      blocks[j].style.backgroundColor = "#FF4949";
+      blocks[j + 1].style.backgroundColor = "#FF4949";
+
+            await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+
+
+      if (value1 > value2) {
+        myvalue.value="Since  "+value1+" is Greater than "+value2+ " so swap the values";
+
+                         await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay/2)
+      );
+        await swap(blocks[j], blocks[j + 1]);
+        blocks = document.querySelectorAll(".block");
+                                 await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay/2)
+      );
+
+      }
+
+      else
+      {
+         myvalue.value="Since  "+value1+" is less than "+value2+ " do nothing";
+                  await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+      }
+
+      blocks[j].style.backgroundColor = "#58B7FF";
+      blocks[j + 1].style.backgroundColor = "#58B7FF";
+    }
+
+    blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
+  }
+  blocks[0].style.backgroundColor = "#13CE66";
+  myvalue.style.color="red";
+  myvalue.value="Done ! All the elements are sorted";
 
 }
